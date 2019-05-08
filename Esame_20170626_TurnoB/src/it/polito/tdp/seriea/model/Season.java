@@ -10,6 +10,11 @@ public class Season {
 		this.description = description;
 	}
 
+	public Season(int season) {
+		super();
+		this.season = season;
+	}
+
 	/**
 	 * @return the season
 	 */

@@ -7,10 +7,10 @@ import it.polito.tdp.seriea.db.SerieADAO;
 
 public class Model {
 	
-	private SimpleWeightedGraph<Season, DefaultWeightedEdge> grafo;
+	private SimpleWeightedGraph<Season, ArcoPersonalizzato> grafo;
 
 	public void creaGrafo() {
-		grafo = new SimpleWeightedGraph<>(DefaultWeightedEdge.class);
+		grafo = new SimpleWeightedGraph<>(ArcoPersonalizzato.class);
 		SerieADAO dao = new SerieADAO();
 		dao.popolaGrafo(grafo);
 	}
