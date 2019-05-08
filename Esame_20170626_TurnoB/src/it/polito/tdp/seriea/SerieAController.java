@@ -42,8 +42,6 @@ public class SerieAController {
 
     @FXML
     void doAnalizzaStagioni(ActionEvent event) {
-    	model.creaGrafo();
-    	txtResult.setText("Grafo Creato");
 
     }
 

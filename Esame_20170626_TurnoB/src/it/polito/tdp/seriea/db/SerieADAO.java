@@ -60,9 +60,4 @@ public class SerieADAO {
 		}
 	}
 
-	public void popolaGrafo(SimpleWeightedGraph<Season, DefaultWeightedEdge> grafo) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
