@@ -64,10 +64,9 @@ public class SerieADAO {
 
 	public void popolaGrafo(SimpleWeightedGraph<Season, ArcoPersonalizzato> grafo) {
 		// QUERY GENERICA SE NON CONOSCO IL CALCIO (Non completa manca peso e duplicati)
-		String sql = "select m1.Season as s1, m1.HomeTeam as ht1, m1.AwayTeam as at1, m2.Season as s2, m2.HomeTeam as ht2, m2.AwayTeam as at2\r\n"
-				+ "from matches as m1, matches as m2\r\n" + "where m1.Season!=m2.Season\r\n"
-				+ "and (m1.HomeTeam=m2.HomeTeam or m1.AwayTeam=m2.AwayTeam or m1.AwayTeam=m2.HomeTeam or m1.HomeTeam=m2.AwayTeam)\r\n"
-				+ "\r\n";
+		String sql = 	"select m1.Season as s1, m1.HomeTeam as ht1, m1.AwayTeam as at1, m2.Season as s2, m2.HomeTeam as ht2, m2.AwayTeam as at2 "
+						+ "from matches as m1, matches as m2\r\n" + "where m1.Season!=m2.Season "
+						+ "and (m1.HomeTeam=m2.HomeTeam or m1.AwayTeam=m2.AwayTeam or m1.AwayTeam=m2.HomeTeam or m1.HomeTeam=m2.AwayTeam) ";
 
 		// QUERY SE CONOSCO IL CALCIO
 		// String sql = "select m1.Season, m2.Season\r\n" +
@@ -122,7 +121,6 @@ public class SerieADAO {
 			conn.close();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 
 		}

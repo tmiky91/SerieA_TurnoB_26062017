@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.seriea.model.Model;
+import it.polito.tdp.seriea.model.Season;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -24,7 +25,7 @@ public class SerieAController {
     private URL location;
 
     @FXML // fx:id="boxSquadra"
-    private ChoiceBox<?> boxSquadra; // Value injected by FXMLLoader
+    private ChoiceBox<Season> boxSquadra; // Value injected by FXMLLoader
 
     @FXML // fx:id="btnCalcolaConnessioniSquadra"
     private Button btnCalcolaConnessioniSquadra; // Value injected by FXMLLoader
@@ -49,6 +50,12 @@ public class SerieAController {
 
     @FXML
     void doCalcolaConnessioniStagione(ActionEvent event) {
+    	Season s = boxSquadra.getValue();
+    	if(s!=null) {
+    		txtResult.setText("Lista Vicini:\n"+model.getViciniEPeso(s));
+    	}else {
+    		showMessage("Seleziona una stagione dal menù a tendina");
+    	}
 
     }
 
@@ -64,6 +71,8 @@ public class SerieAController {
         assert btnSimulaEspulsi != null : "fx:id=\"btnSimulaEspulsi\" was not injected: check your FXML file 'SerieA.fxml'.";
         assert btnAnalizzaStagioni != null : "fx:id=\"btnAnalizzaStagioni\" was not injected: check your FXML file 'SerieA.fxml'.";
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'SerieA.fxml'.";
+        
+        boxSquadra.getItems().addAll(Model.getAllSeasons());
 
     }
     
@@ -75,7 +84,5 @@ public class SerieAController {
 
 	public void setModel(Model model) {
 		this.model = model;
-		// TODO Auto-generated method stub
-		
 	}
 }
