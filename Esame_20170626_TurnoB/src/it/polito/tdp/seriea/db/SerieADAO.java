@@ -101,6 +101,11 @@ public class SerieADAO {
 				if (t1.equals(t4)) {
 					teamComune = t1;
 				}
+//				teamComune=t1.equals(t2) ? t1 :null;
+//				teamComune=t2.equals(t3) ? t2 :null;
+//				teamComune=t3.equals(t4) ? t3 :null;
+//				teamComune=t1.equals(t4) ? t1 :null;
+
 				if (!grafo.containsVertex(s1)) {
 					grafo.addVertex(s1);
 				}
@@ -126,5 +131,8 @@ public class SerieADAO {
 		}
 
 	}
+	
+	
+	
 
 }
