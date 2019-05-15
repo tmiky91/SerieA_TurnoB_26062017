@@ -112,14 +112,15 @@ public class SerieADAO {
 				if (!grafo.containsVertex(s2)) {
 					grafo.addVertex(s2);
 				}
+				if(grafo.containsEdge(s1, s2)){
+					ArcoPersonalizzato arco = grafo.getEdge(s1, s2);
+					arco.addTeam(teamComune);
+				}
 				if (!grafo.containsEdge(s1, s2) && !grafo.containsEdge(s2, s1)) {
 					ArcoPersonalizzato arco = grafo.addEdge(s1, s2);
 					arco.addTeam(teamComune);
 				}
-				else {
-					ArcoPersonalizzato arco = grafo.getEdge(s1, s2);
-					arco.addTeam(teamComune);
-				}
+				
 
 			}
 

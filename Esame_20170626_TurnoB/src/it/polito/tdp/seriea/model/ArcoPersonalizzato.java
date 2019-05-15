@@ -18,10 +18,12 @@ public class ArcoPersonalizzato extends DefaultWeightedEdge{
 	// implicitamente aggiorna peso perchè in questo caso il peso è dato dal numero di squadre comuni in 2 stagioni
 	public void addTeam(Team t1) {
 		
+		if(!teams.contains(t1)) {
+			teams.add(t1);
+			peso++;
+		}
 		
 		
-		teams.add(t1);
-		peso++;
 	}
 	
 	public double getPeso( ) {
