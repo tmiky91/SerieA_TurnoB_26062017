@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.seriea.model.Model;
+import it.polito.tdp.seriea.model.Season;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -24,7 +25,7 @@ public class SerieAController {
     private URL location;
 
     @FXML // fx:id="boxSquadra"
-    private ChoiceBox<?> boxSquadra; // Value injected by FXMLLoader
+    private ChoiceBox<Season> boxSquadra; // Value injected by FXMLLoader
 
     @FXML // fx:id="btnCalcolaConnessioniSquadra"
     private Button btnCalcolaConnessioniSquadra; // Value injected by FXMLLoader
@@ -42,11 +43,18 @@ public class SerieAController {
 
     @FXML
     void doAnalizzaStagioni(ActionEvent event) {
-
+    	txtResult.setText(model.creaGrafo());
+    	boxSquadra.getItems().addAll(model.getVertici());
     }
 
     @FXML
     void doCalcolaConnessioniStagione(ActionEvent event) {
+    	Season s = boxSquadra.getValue();
+    	if(s!=null) {
+    		txtResult.setText(model.getStagioniConSquadreComuni(s));
+    	}else {
+    		showMessage("Errore: Seleziona una stagione dal menù a tendina");
+    	}
 
     }
 
@@ -73,7 +81,5 @@ public class SerieAController {
 
 	public void setModel(Model model) {
 		this.model = model;
-		// TODO Auto-generated method stub
-		
 	}
 }
